@@ -1,7 +1,3 @@
-#
-# Cookbook:: chef-client-hab-distro
-# Recipe:: default
-#
 # Copyright:: 2019, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,3 +11,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+hab_install
+
+hab_package 'chef/chef-client'
+
+package 'chef' do
+  action :remove
+end
+
+execute '/bin/hab pkg binlink chef/chef-client' do
+  not_if { ::File.exist?('/bin/chef-client') }
+end
+

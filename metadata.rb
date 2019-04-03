@@ -9,3 +9,5 @@ chef_version '>= 13.0'
 
 issues_url 'https://github.com/chef-cft/chef-client-hab-distro/issues'
 source_url 'https://github.com/chef-cft/chef-client-hab-distro'
+
+depends 'habitat'

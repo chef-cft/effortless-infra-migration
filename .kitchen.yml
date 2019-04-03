@@ -4,10 +4,10 @@ driver:
 
 provisioner:
   name: chef_zero
-  # You may wish to disable always updating cookbooks in CI or other testing environments.
-  # For example:
-  #   always_update_cookbooks: <%= !ENV['CI'] %>
+  chef_client_path: /usr/bin/chef-client
   always_update_cookbooks: true
+  multiple_converge: 2
+  enforce_idempotency: true
 
 verifier:
   name: inspec
@@ -18,7 +18,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[test::default]
+      - recipe[chef-client-hab-distro::default]
     verifier:
       inspec_tests:
         - test/integration/default
