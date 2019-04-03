@@ -9,15 +9,7 @@ git clone chef-client-hab-distro
 
 cd chef-client-hab-distro
 
-kitchen create
-
-chef-run IP install-chef-local
-
-validate chef installed
-
-chef-run IP chef-client-hab-distro
-
-validate chef is hab managed
+kitchen test
 ```
 
 
