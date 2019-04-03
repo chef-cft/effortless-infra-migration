@@ -11,7 +11,7 @@ end
 
 # TODO: Update this to be Windows-Friendly
 describe command('/usr/bin/hab pkg list --all') do
-  it { should exist }
+  its('exit_status') { should eq 0 }
   its('stdout') { should match /core\/hab/ }
   its('stdout') { should match /chef\/chef-client/ }
 end
