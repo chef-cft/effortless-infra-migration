@@ -18,7 +18,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[test::default]
+      - recipe[chef-client-hab-distro::default]
     verifier:
       inspec_tests:
         - test/integration/default
