@@ -12,4 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "#{cookbook_name}::distributed"
+hab_install
+
+hab_package 'chef/chef-client'
+
+package 'chef' do
+  action :remove
+end
+
+execute '/bin/hab pkg binlink chef/chef-client' do
+  not_if { ::File.exist?('/bin/chef-client') }
+end
+

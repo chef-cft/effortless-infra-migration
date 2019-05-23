@@ -4,8 +4,9 @@ driver:
 
 provisioner:
   name: chef_zero
+  product_name: 'chef'
+  product_version: '14'
   chef_client_path: /usr/bin/chef-client
-  always_update_cookbooks: true
   multiple_converge: 2
   enforce_idempotency: true
 
@@ -14,14 +15,12 @@ verifier:
 
 platforms:
   - name: centos-7
-  - name: windows-2019
-    driver_config:
-      box: tas50/windows_2019
+  # - name: windows-2019
+  #   driver_config:
+  #     box: tas50/windows_2019
 
 suites:
   - name: default
-    run_list:
-      - recipe[chef-client-hab-distro::default]
     verifier:
       inspec_tests:
         - test/integration/default

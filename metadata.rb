@@ -1,13 +1,13 @@
-name 'chef-client-hab-distro'
+name 'effortless_infra_migration'
 maintainer 'Chef Software, Inc'
 maintainer_email 'support@chef.io'
 license 'Apache-2.0'
-description 'Installs/Configures chef-client-hab-distro'
-long_description 'Installs/Configures chef-client-hab-distro'
+description 'Migration tool for moving from omnibus to effortless patterns of Chef Infra'
+long_description 'Migration tool for moving from omnibus to effortless patterns of Chef Infra'
 version '0.1.0'
 chef_version '>= 13.0'
 
-issues_url 'https://github.com/chef-cft/chef-client-hab-distro/issues'
-source_url 'https://github.com/chef-cft/chef-client-hab-distro'
+issues_url 'https://github.com/chef-cft/effortless-infra-migration/issues'
+source_url 'https://github.com/chef-cft/effortless-infra-migration'
 
 depends 'habitat'

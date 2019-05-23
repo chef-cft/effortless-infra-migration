@@ -1,13 +1,13 @@
-# chef-client-hab-distro
+# effortless_infra_migration
 
-Cookbook to distribute habitat package chef-client to all currently legacy bootstrapped chef-client managed nodes.
+Migration tool for moving from omnibus to effortless patterns of Chef-Infra.
 
 # Usage
 
 ```
-git clone chef-client-hab-distro
+git clone effortless_infra_migration
 
-cd chef-client-hab-distro
+cd effortless_infra_migration
 
 kitchen test
 ```
