@@ -12,15 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-hab_install
-
-hab_package 'chef/chef-client'
-
-package 'chef' do
-  action :remove
+effortless_infra node['name'] do
+  action :install
 end
-
-execute '/bin/hab pkg binlink chef/chef-client' do
-  not_if { ::File.exist?('/bin/chef-client') }
-end
-

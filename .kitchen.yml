@@ -20,7 +20,14 @@ platforms:
   #     box: tas50/windows_2019
 
 suites:
-  - name: default
+  - name: distributed
+    named_run_list: distributed
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
+  - name: supervised
+    named_run_list: supervised
     verifier:
       inspec_tests:
         - test/integration/default
