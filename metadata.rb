@@ -11,7 +11,8 @@ issues_url 'https://github.com/chef-cft/effortless-infra-migration/issues'
 source_url 'https://github.com/chef-cft/effortless-infra-migration'
 
 supports 'ubuntu'
-supports 'rhel'
+supports 'debian'
+supports 'redhat'
 
 depends 'habitat'
 

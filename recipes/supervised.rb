@@ -27,4 +27,30 @@ hab_service "#{node['effortless']['origin']}/#{node['effortless']['pkg']}" do
   channel node['effortless']['channel']
   strategy 'at-once'
   topology 'standalone'
+  notifies :stop, 'service[chef-client]'
+end
+
+service 'chef-client' do
+  action :disable
+end
+if platform_family?('debian', 'rhel')
+  cron 'chef-client' do
+    action :delete
+  end
+
+  cron_d 'chef-client' do
+    action :delete
+  end
+end
+
+if platform_family?('windows')
+  windows_service 'chef-client' do
+    startup_type :disabled
+    action :configure_startup
+    only_if { ::Win32::Service.exists?('chef-client') }
+  end
+
+  windows_task 'chef-client' do
+    action :delete
+  end
 end
