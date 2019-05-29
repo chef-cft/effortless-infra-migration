@@ -9,6 +9,7 @@ provisioner:
     chef_license: accept
     local_mode: true
   attributes:
+    chef_license: accept
     effortless:
       origin: ncerny
       pkg: infra-client

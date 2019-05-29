@@ -14,3 +14,7 @@ supports 'ubuntu'
 supports 'rhel'
 
 depends 'habitat'
+
+conflicts 'chef_client_updater'
+conflicts 'chef-updater'
+conflicts 'omnibus_updater'

@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-hab_install
+hab_install do
+  license node['chef_license']
+end
 
 hab_package "#{node['effortless']['origin']}/#{node['effortless']['pkg']}" do
   action :install
