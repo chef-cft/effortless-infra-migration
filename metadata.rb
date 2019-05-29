@@ -10,4 +10,7 @@ chef_version '>= 13.0'
 issues_url 'https://github.com/chef-cft/effortless-infra-migration/issues'
 source_url 'https://github.com/chef-cft/effortless-infra-migration'
 
+supports 'ubuntu'
+supports 'rhel'
+
 depends 'habitat'

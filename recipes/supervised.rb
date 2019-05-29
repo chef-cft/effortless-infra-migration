@@ -12,6 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-effortless_infra node['name'] do
-  action [:install, :enable]
+include_recipe "#{cookbook_name}::distributed"
+
+hab_sup 'default'
+
+hab_user_toml node['effortless']['pkg'] do
+  config config_path: Chef::Config['config_file']
+end
+
+# Need to use my build until chef official builds are promoted, with changes in
+# https://github.com/chef/chef/pull/8598
+hab_service "#{node['effortless']['origin']}/#{node['effortless']['pkg']}" do
+  retries 3
+  channel node['effortless']['channel']
+  strategy 'at-once'
+  topology 'standalone'
 end

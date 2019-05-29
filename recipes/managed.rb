@@ -12,4 +12,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-effortless_infra node['name']
+include_recipe "#{cookbook_name}::distributed"

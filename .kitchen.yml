@@ -4,11 +4,15 @@ driver:
 
 provisioner:
   name: chef_zero
-  product_name: 'chef'
-  product_version: '14'
   chef_client_path: /usr/bin/chef-client
-  multiple_converge: 2
-  enforce_idempotency: true
+  client_rb:
+    chef_license: accept
+    local_mode: true
+  attributes:
+    effortless:
+      origin: ncerny
+      pkg: infra-client
+      channel: unstable
 
 verifier:
   name: inspec
@@ -26,6 +30,9 @@ suites:
       inspec_tests:
         - test/integration/default
     attributes:
+    provisioner:
+      multiple_converge: 2
+      enforce_idempotency: true
   - name: supervised
     named_run_list: supervised
     verifier:

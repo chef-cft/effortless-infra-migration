@@ -12,6 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-effortless_infra node['name'] do
+hab_install
+
+hab_package "#{node['effortless']['origin']}/#{node['effortless']['pkg']}" do
   action :install
+  channel node['effortless']['channel']
+  notifies :remove, 'package[chef]'
+  notifies :run, 'execute[Link Chef Infra Binaries]'
+end
+
+package 'chef' do
+  action :nothing
+  notifies :delete, 'directory[/opt/chef]'
+end
+
+directory '/opt/chef' do
+  action :nothing
+  recursive true
+end
+
+execute 'Link Chef Infra Binaries' do
+  command "/bin/hab pkg binlink --force #{node['effortless']['origin']}/#{node['effortless']['pkg']}"
+  action :nothing
 end
