@@ -15,3 +15,7 @@ describe command('/usr/bin/hab pkg list --all') do
   its('stdout') { should match /core\/hab/ }
   its('stdout') { should match /chef\/chef-client/ }
 end
+
+describe directory('/opt/chef') do
+  it { should_not exist }
+end

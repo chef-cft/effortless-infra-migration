@@ -1,4 +1,6 @@
 # effortless_infra_migration
+Migration tool for moving from omnibus to effortless patterns of Chef-Infra.
+=======
 
 Migration tool for moving from an omnibus install of Chef Infra Client to the Effortless patterns.
 
@@ -19,7 +21,6 @@ This model allows customers to consume Chef Infra Server and their existing Cook
 ## Effortless Config
 In this model, the Chef Infra Client and all configuration is packaged as a Chef Habitat artifact.  This is the end-state of treating your infrastructure as an application.  In this model, only the most basic OS-level configuration and hardening is done via the Chef Infra Client.  No Chef Infra Server is required - the content is completely contained within the Chef Habitat artifact. This allows infrastructure to be viewed more simply, and tested more completely, ultimately increasing the velocity and safety our customers experience.
 This requires customers to have well-formed CI/CD strategies, as well as a well defined storage model.  It is assumed that most Enterprise Customers will have several Application Cookbooks that will prevent them from fully embracing this model quickly; however, it is the model that all customers should be driving towards.
-
 
 # Usage
 

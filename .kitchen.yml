@@ -5,23 +5,37 @@ driver:
 provisioner:
   name: chef_zero
   chef_client_path: /usr/bin/chef-client
-  always_update_cookbooks: true
-  multiple_converge: 2
-  enforce_idempotency: true
+  client_rb:
+    chef_license: accept
+    local_mode: true
+  attributes:
+    chef_license: accept
+    effortless:
+      origin: ncerny
+      pkg: infra-client
+      channel: unstable
 
 verifier:
   name: inspec
 
 platforms:
   - name: centos-7
-  - name: windows-2019
-    driver_config:
-      box: tas50/windows_2019
+  # - name: windows-2019
+  #   driver_config:
+  #     box: tas50/windows_2019
 
 suites:
-  - name: default
-    run_list:
-      - recipe[chef-client-hab-distro::default]
+  - name: distributed
+    named_run_list: distributed
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
+    provisioner:
+      multiple_converge: 2
+      enforce_idempotency: true
+  - name: supervised
+    named_run_list: supervised
     verifier:
       inspec_tests:
         - test/integration/default
