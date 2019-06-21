@@ -11,8 +11,8 @@ provisioner:
   attributes:
     chef_license: accept
     effortless:
-      origin: ncerny
-      pkg: infra-client
+      origin: chef
+      pkg: chef-client
       channel: unstable
 
 verifier:
