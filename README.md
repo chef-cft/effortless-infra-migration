@@ -34,6 +34,17 @@ kitchen test supervised
 kitchen test managed
 ```
 
+## Effortless Infra Migration Flow Overview
+
+1. do a 'knife backup' of chef server(s)
+2. Run migration/upgrade tool on chef-server backup
+2. check in Policyfiles and cookbook updates to source control including the 'cutover' cookbook
+2. build and deliver effortless packages in customer environment
+3. test deployment and 'cutover' using kitchen
+4. build confidence / test
+5. flip the switch by deploying policyfiles to production
+6. validate now by checking chef15 and effortless
+4. done
 
 TODO:
 
